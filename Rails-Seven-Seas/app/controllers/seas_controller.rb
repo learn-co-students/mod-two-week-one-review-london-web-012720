@@ -1,12 +1,13 @@
 class SeasController < ApplicationController
   #define your controller actions here
-
+  
   def welcome
   
   end
 
   def index 
     @seas = Sea.all
+    
   end
 
   def show #individual record
@@ -19,7 +20,7 @@ class SeasController < ApplicationController
 
   def create #save new record when clicked submit on "new"
       @sea = Sea.new(allowed_params)
-
+      
       if @sea.save
           redirect_to seas_path
       else
@@ -42,8 +43,9 @@ class SeasController < ApplicationController
   end
 
   def destroy
-    dfjskjfhdskjfdshfkjds
-
+    @sea = Sea.find(params[:id])
+    @sea.delete
+    redirect_to seas_path
   end
 
 
@@ -53,7 +55,7 @@ class SeasController < ApplicationController
   # Example: @sea.update(sea_params)
   # check the return value of sea_params to see what you're working with!
   def allowed_params
-    params.permit(:name, :temperature, :bio, :mood, :image_url, :favorite_color, :scariest_creature, :has_mermaids)
+    params.require(:sea).permit(:name, :temperature, :bio, :mood, :image_url, :favorite_color, :scariest_creature, :has_mermaids)
   end
 
 

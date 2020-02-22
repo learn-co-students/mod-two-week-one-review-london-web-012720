@@ -5,7 +5,7 @@
     <h2 class="text-center"><%= @sea.name %> </h2>
     <p><%= @sea.bio %></p>
     <button class="btn btn-info" style="margin: 1em"><a href="/seas/<%=@sea.id%>/edit">Edit</a></button><button class="btn btn-info" style="margin: 1em"><a href="/seas">Back</a></button>
-     <%= link_to 'Delete', @sea, :method => :delete, :confirm => "Are you sure?" %>
+     <%= button_to "Erase", @sea, method: :delete, class:"btn btn-info" %>
 
     <div>
       <ul class="list-group">
